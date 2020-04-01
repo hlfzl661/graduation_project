@@ -80,7 +80,7 @@ def get_tag(first_html):
 
 
 # 数据清洗
-def Clean(datatags):
+def clean(datatags):
     comments = ''
     for k in range(len(datatags)):
         comments = comments + (str(datatags[k]))
@@ -88,7 +88,7 @@ def Clean(datatags):
 
 
 # 绘制词云
-def draw_wordCloud(commentsdt):
+def draw_word_cloud(commentsdt):
     color_mask = imread('resource/background.jpg')
     cloud = WordCloud(
         font_path='simhei.ttf',
@@ -127,10 +127,10 @@ def main():
     for n in range(5):
         first_html = all_gamehtml[n]
         datatags = get_tag(first_html)
-        comments = Clean(datatags)
+        comments = clean(datatags)
         commentsdt.append(comments)
         merge_string = ''.join(commentsdt)
-    draw_wordCloud(merge_string)
+    draw_word_cloud(merge_string)
 
 
 if __name__ == '__main__':
