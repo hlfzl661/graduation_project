@@ -103,19 +103,29 @@ def draw_word_cloud(commentsdt):
     plt.axis('off')
     plt.show()
 
-
 '''
 # 绘制图表
 def draw_charts():
-    labels = '>1000000', '>100000且<1000000', '>10000且<100000', '<10000'
-    sizes = [15, 30, 45, 10]
-    # 设置分离的距离，0表示不分离
-    explode = (0, 0.1, 0, 0)
-    plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-            shadow=True, startangle=90)
-    # Equal aspect ratio 保证画出的图是正圆形
-    plt.axis('equal')
+    db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
+    cursor = db.cursor()
+    cursor.execute("select current,peak,game from gamelist")
+    result = cursor.fetchall()
+    current = []
+    peak = []
+    game = []
+    for x in result:
+        current.append(x[0])
+        peak.append(x[1])
+        game.append(x[2])
+    plt.bar(range(len(need)), need, color='steelblue', tick_label=city)
+    plt.xlabel("城市名")
+    plt.ylabel("数量")
+    plt.title("城市职位需求图")
+    for x, y in enumerate(need):
+        plt.text(x - 0.4, y + 0.4, '%s' % y)
     plt.show()
+    cursor.close()  # 关闭游标
+    db.close()  # 关闭数据库
 '''
 
 
