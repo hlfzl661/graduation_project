@@ -1,0 +1,101 @@
+当前玩家人数^今日峰值^游戏
+772085^1226724^Counter-Strike: Global Offensive
+445775^709816^Dota 2
+323805^596513^PLAYERUNKNOWN'S BATTLEGROUNDS
+153551^228662^Mount & Blade II: Bannerlord
+134418^188967^Grand Theft Auto V
+106192^178813^Tom Clancy's Rainbow Six Siege
+71378^146436^Football Manager 2020
+67170^113459^MONSTER HUNTER: WORLD
+66583^96358^ARK: Survival Evolved
+64914^74716^Team Fortress 2
+62014^81702^Warframe
+58449^86698^Destiny 2
+41184^53350^Terraria
+39529^71400^Rust
+38411^85623^Source SDK Base 2007
+37412^69404^Path of Exile
+32479^37789^Unturned
+32399^57445^Garry's Mod
+32032^95293^Rocket League
+32007^35378^Wallpaper Engine
+30481^52737^Euro Truck Simulator 2
+29833^41914^The Witcher 3: Wild Hunt
+29705^43817^War Thunder
+26680^46489^Sid Meier's Civilization VI
+26516^44095^Dead by Daylight
+24429^35981^Cities: Skylines
+24080^29585^Human: Fall Flat
+23974^34732^Stardew Valley
+23259^41071^Borderlands 3
+22559^27960^Black Desert Online
+22036^31603^World of Tanks Blitz
+21605^39793^Sid Meier's Civilization V
+21366^26987^PAYDAY 2
+20950^27917^NBA 2K20
+17426^26518^The Elder Scrolls Online
+17198^32735^Risk of Rain 2
+16091^23388^Don't Starve Together
+16009^28320^Stellaris
+15672^21479^RimWorld
+15543^21980^Red Dead Redemption 2
+15423^25646^Hearts of Iron IV
+14542^24813^Total War: WARHAMMER II
+14396^21643^Football Manager 2019
+13737^27895^Farming Simulator 19
+13708^20597^Assassin's Creed Odyssey
+13673^30401^Arma 3
+13584^22535^7 Days to Die
+13556^22910^DayZ
+13439^30029^Counter-Strike
+13280^19229^World of Warships
+12983^15072^Dying Light
+12609^27129^Brawlhalla
+12068^23404^Europa Universalis IV
+11938^16100^Total War: THREE KINGDOMS
+11822^21507^The Elder Scrolls V: Skyrim Special Edition
+11755^26455^Age of Empires II: Definitive Edition
+11725^16274^Tomb Raider
+11697^16479^Mount & Blade: Warband
+11546^17960^Left 4 Dead 2
+11313^23441^Divinity: Original Sin 2
+11170^15361^Dota Underlords
+11063^19230^Fallout 4
+10165^23546^Paladins
+9974^17434^Spacewar
+9708^18088^eFootball PES 2020
+9047^19019^DOOM Eternal
+8987^12884^VRChat
+8633^19127^FINAL FANTASY XIV Online
+8186^9589^Shadowverse
+8085^14770^Conan Exiles
+7921^23367^SMITE
+7660^14187^Factorio
+7621^13893^The Elder Scrolls V: Skyrim
+7561^19998^Age of Empires II (2013)
+7358^10672^DARK SOULS™ III
+7123^10400^Killing Floor 2
+6825^8331^Black Desert
+6733^9600^Yu-Gi-Oh! Duel Links
+6581^8780^Oxygen Not Included
+6551^8126^Slay the Spire
+6331^8263^The Binding of Isaac: Rebirth
+5947^11347^Total War: ROME II - Emperor Edition
+5855^6314^Plants vs. Zombies: Game of the Year
+5823^6903^NGU IDLE
+5740^10540^The Forest
+5691^9118^The Sims(TM) 3
+5684^6444^Idle Champions of the Forgotten Realms
+5679^7527^Russian Fishing 4
+5522^11014^Space Engineers
+5443^10196^Elite Dangerous
+5386^9640^theHunter: Call of the Wild™
+5350^10798^Counter-Strike: Source
+5302^6457^Just Cause 3
+5233^10380^Crusader Kings II
+5102^7586^Crossout
+4997^4997^So Many Cubes
+4973^7643^State of Decay 2
+4941^5981^EVE Online
+4810^7806^Football Manager 2018
+4713^8675^Company of Heroes 2

@@ -103,7 +103,7 @@ def draw_word_cloud(commentsdt):
     plt.axis('off')
     plt.show()
 
-'''
+
 # 绘制图表
 def draw_charts():
     db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
@@ -112,21 +112,22 @@ def draw_charts():
     result = cursor.fetchall()
     current = []
     peak = []
-    game = []
+    # game = []
     for x in result:
+        if x == 10:
+            break
         current.append(x[0])
         peak.append(x[1])
-        game.append(x[2])
-    plt.bar(range(len(need)), need, color='steelblue', tick_label=city)
+        # game.append(x[2])
+    plt.bar(range(len(peak)), peak, color='steelblue', tick_label=current)
     plt.xlabel("城市名")
     plt.ylabel("数量")
     plt.title("城市职位需求图")
-    for x, y in enumerate(need):
+    for x, y in enumerate(peak):
         plt.text(x - 0.4, y + 0.4, '%s' % y)
     plt.show()
     cursor.close()  # 关闭游标
     db.close()  # 关闭数据库
-'''
 
 
 def main():
@@ -141,6 +142,7 @@ def main():
         commentsdt.append(comments)
         merge_string = ''.join(commentsdt)
     draw_word_cloud(merge_string)
+    draw_charts()
 
 
 if __name__ == '__main__':
