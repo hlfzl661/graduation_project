@@ -5,6 +5,7 @@ import sys
 from wordcloud import WordCloud
 from imageio import imread
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 
 
 def get_data(html):
@@ -52,7 +53,7 @@ def read__db():
             line = line.strip().split('^')
             cursor.execute(
                 "insert into gamelist(current,peak,game) values('%d','%d','%s')" %
-                (int(line[0]), int(line[0]), pymysql.escape_string(line[2])))
+                (int(line[0]), int(line[1]), pymysql.escape_string(line[2])))
             db.commit()
     except Exception as e:
         print(e)
@@ -104,19 +105,56 @@ def draw_word_cloud(commentsdt):
     plt.show()
 
 
-'''
 # 绘制图表
 def draw_charts():
-    labels = '>1000000', '>100000且<1000000', '>10000且<100000', '<10000'
-    sizes = [15, 30, 45, 10]
-    # 设置分离的距离，0表示不分离
-    explode = (0, 0.1, 0, 0)
-    plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-            shadow=True, startangle=90)
-    # Equal aspect ratio 保证画出的图是正圆形
-    plt.axis('equal')
+    # 获取一个数据库连接，注意如果是UTF-8类型的，需要制定数据库
+    db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
+    cursor = db.cursor()  # 获取一个游标
+    cursor.execute("select * from gamelist order by current limit 90,10")
+    result = cursor.fetchall()  # result为元组
+    # 将元组数据存进列表中
+    current = []
+    peak = []
+    game = []
+    for x in result:
+        current.append(x[0])
+        peak.append(x[1])
+        game.append(x[2])
+
+    # 直方图
+    # 调用中文字体
+    my_font = font_manager.FontProperties(fname="C:/WINDOWS/Fonts/msyh.ttc")
+
+    # 设置图形大小
+    plt.figure(figsize=(15, 12), dpi=80)
+
+    height = 0.2
+    g1 = list(range(len(game)))
+    g2 = [i + height for i in g1]  # 坐标轴偏移
+
+    # 绘图
+    plt.barh(range(len(game)), current, height=height, label="当前", color="#FFC125")
+    plt.barh(g2, peak, height=height, label="峰值", color="#969696")
+
+    # 绘制网格
+    plt.grid(alpha=0.4)
+
+    # y轴坐标刻度标识
+    plt.yticks(g2, game, fontproperties=my_font, fontsize=10)
+
+    # 添加图例
+    plt.legend(prop=my_font)
+
+    # 添加横纵坐标，标题
+    plt.xlabel("人数", fontproperties=my_font, fontsize=16)
+    # plt.ylabel("游戏名称", fontproperties=my_font, fontsize=16)
+    plt.title("Steam在线人数排名前十的游戏人数统计图", fontproperties=my_font, fontsize=24)
+
+
+    # 显示图形
     plt.show()
-'''
+    cursor.close()  # 关闭游标
+    db.close()  # 关闭数据库
 
 
 def main():
@@ -130,7 +168,8 @@ def main():
         comments = clean(datatags)
         commentsdt.append(comments)
         merge_string = ''.join(commentsdt)
-    draw_word_cloud(merge_string)
+    # draw_word_cloud(merge_string)
+    draw_charts()
 
 
 if __name__ == '__main__':
