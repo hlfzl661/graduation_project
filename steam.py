@@ -48,7 +48,7 @@ def read__db():
     try:
         for line in fr:
             count += 1
-            if (count == 1):
+            if count == 1:
                 continue
             line = line.strip().split('^')
             cursor.execute(
@@ -77,8 +77,25 @@ def get_tag(first_html):
     datatags = []
     for i in soup.find_all('a', class_="app_tag"):
         datatags.append(i.text)
-    return datatags
+    # print(datatags)
 
+
+
+    porate = []
+
+    for j in soup.find_all('span', class_='game_review_summary positive')[2:]:
+        # print(j['data-tooltip-html'])
+        porate.append(j['data-tooltip-html'])
+    print(porate)
+
+    # print(rate)
+
+    '''
+    rate = soup.find_all('span', class_='game_review_summary positive')
+    print(rate[2], rate[3])
+    print(rate[2]['data-tooltip-html'], rate[3]['data-tooltip-html'])
+    '''
+    return datatags
 
 # 数据清洗
 def clean(datatags):
@@ -99,14 +116,14 @@ def draw_word_cloud(commentsdt):
         max_font_size=120
     )
     word_cloud = cloud.generate(commentsdt)
-    word_cloud.to_file('output/output.jpg')
+    word_cloud.to_file('output/wordcloud.jpg')
     plt.imshow(word_cloud)
     plt.axis('off')
     plt.show()
 
 
 # 绘制图表
-def draw_charts():
+def draw_chart():
     # 获取一个数据库连接，注意如果是UTF-8类型的，需要制定数据库
     db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
     cursor = db.cursor()  # 获取一个游标
@@ -150,8 +167,8 @@ def draw_charts():
     # plt.ylabel("游戏名称", fontproperties=my_font, fontsize=16)
     plt.title("Steam在线人数排名前十的游戏人数统计图", fontproperties=my_font, fontsize=24)
 
-
     # 显示图形
+    plt.savefig('output/chart.jpg')
     plt.show()
     cursor.close()  # 关闭游标
     db.close()  # 关闭数据库
@@ -169,7 +186,7 @@ def main():
         commentsdt.append(comments)
         merge_string = ''.join(commentsdt)
     # draw_word_cloud(merge_string)
-    draw_charts()
+    # draw_chart()
 
 
 if __name__ == '__main__':
