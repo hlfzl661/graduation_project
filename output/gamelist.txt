@@ -1,101 +1,101 @@
 当前玩家人数^今日峰值^游戏
-1007944^1308963^Counter-Strike: Global Offensive
-609398^784907^Dota 2
-356310^491492^PLAYERUNKNOWN'S BATTLEGROUNDS
-161685^190344^Grand Theft Auto V
-121040^146971^Mount & Blade II: Bannerlord
-114639^165846^Tom Clancy's Rainbow Six Siege
-105992^122367^ARK: Survival Evolved
-103979^130224^Football Manager 2020
-76705^106077^MONSTER HUNTER: WORLD
-68810^94189^Rust
-67906^85918^Team Fortress 2
-65818^75733^Warframe
-62412^82930^Destiny 2
-54098^95287^Source SDK Base 2007
-53662^69791^Sid Meier's Civilization VI
-52841^70500^Terraria
-43134^95041^Rocket League
-41535^54811^Path of Exile
-39975^47551^Euro Truck Simulator 2
-39491^47324^Total War: WARHAMMER II
-38650^57543^Garry's Mod
-35317^40846^The Witcher 3: Wild Hunt
-34299^35784^Wallpaper Engine
-32370^44519^Dead by Daylight
-30629^36893^Unturned
-30192^44353^Sid Meier's Civilization V
-29690^38194^Stardew Valley
-29629^42818^The Elder Scrolls Online
-28552^32740^PAYDAY 2
-27113^31612^War Thunder
-26903^30556^Farming Simulator 19
-26901^29678^Black Desert Online
-25198^28866^World of Tanks Blitz
-25102^27542^NBA 2K20
-24195^40499^Arma 3
-23796^25183^DARK SOULS™ III
-23447^27606^Cities: Skylines
-22933^29548^Hearts of Iron IV
-21724^34018^Age of Empires II: Definitive Edition
-20879^27461^DayZ
-20608^23968^Football Manager 2019
-20281^26149^7 Days to Die
-19828^26491^Don't Starve Together
-19598^22737^RimWorld
-19562^26537^Europa Universalis IV
-19288^31815^Counter-Strike
-18798^21214^Red Dead Redemption 2
-18797^25955^Stellaris
-18470^25936^The Elder Scrolls V: Skyrim Special Edition
-17978^23818^Fallout 4
-17909^24229^Borderlands 3
-16480^21182^Fallout 76
-15806^27679^Paladins
-15412^22422^Last Oasis
-15120^18648^World of Warships
-14424^20766^eFootball PES 2020
-14216^19103^Spacewar
-13741^25633^FINAL FANTASY XIV Online
-13601^20416^Left 4 Dead 2
-13579^26396^Brawlhalla
-13562^17746^Factorio
-13528^15469^Total War: THREE KINGDOMS
-12967^18713^No Man's Sky
-12851^20753^Divinity: Original Sin 2
-12739^14660^Assassin's Creed Odyssey
-12509^24855^Age of Empires II (2013)
-11961^14188^Mount & Blade: Warband
-11804^13605^Dota Underlords
-11793^14616^Northgard
-11710^14773^Dying Light
-11599^15165^The Elder Scrolls V: Skyrim
-11513^18095^Human: Fall Flat
-11151^25621^SMITE
-10945^16203^Conan Exiles
-10420^11584^Sekiro™: Shadows Die Twice
-10189^16146^VRChat
-10031^16917^Risk of Rain 2
-9867^12574^Planet Zoo
-9537^13859^Green Hell
-9480^13322^Elite Dangerous
-9469^11803^Grim Dawn
-9004^11860^Total War: ROME II - Emperor Edition
-8941^13052^Crusader Kings II
-8649^33712^Tabletop Simulator
-8625^9660^Oxygen Not Included
-8517^13301^Space Engineers
-8315^8765^Black Desert
-8025^9303^Killing Floor 2
-7862^8791^Slay the Spire
-7749^8544^The Binding of Isaac: Rebirth
-7598^8366^Russian Fishing 4
-7558^9862^Company of Heroes 2
-7547^9332^Yu-Gi-Oh! Duel Links
-7464^9899^F1 2019
-7413^11817^The Forest
-7115^8263^Kingdom Come: Deliverance
-7024^8444^Football Manager 2018
-6995^11157^Counter-Strike: Source
-6910^9010^XCOM 2
-6873^9632^Conqueror's Blade
+1146330^1247322^Counter-Strike: Global Offensive
+681424^707802^Dota 2
+573517^573938^PLAYERUNKNOWN'S BATTLEGROUNDS
+160551^166187^Grand Theft Auto V
+150011^150011^Tom Clancy's Rainbow Six Siege
+101135^109788^ARK: Survival Evolved
+98489^118866^Football Manager 2020
+98388^109464^Mount & Blade II: Bannerlord
+91879^91879^MONSTER HUNTER: WORLD
+87086^101389^Destiny 2
+71568^80118^Team Fortress 2
+71059^92513^Source SDK Base 2007
+66486^68408^Warframe
+60717^77900^Rust
+54157^64716^Terraria
+45533^45533^Dead by Daylight
+45259^84459^Rocket League
+44079^54029^Sid Meier's Civilization VI
+42770^52598^Garry's Mod
+37987^37987^Wallpaper Engine
+35200^45923^Path of Exile
+33501^40505^Total War: WARHAMMER II
+32945^41275^Euro Truck Simulator 2
+29496^31775^The Witcher 3: Wild Hunt
+29313^31406^Unturned
+28057^33865^The Elder Scrolls Online
+27462^31291^Stardew Valley
+27096^27096^NBA 2K20
+26886^28443^War Thunder
+26369^28012^DARK SOULS™ III
+26058^35751^Sid Meier's Civilization V
+24653^28243^World of Tanks Blitz
+23424^26453^PAYDAY 2
+23283^34783^Arma 3
+22437^26010^Hearts of Iron IV
+20742^21442^Don't Starve Together
+20535^28361^Black Desert Online
+19613^25431^DayZ
+19570^30537^Counter-Strike
+19407^30227^Farming Simulator 19
+19174^20209^Cities: Skylines
+18728^21150^7 Days to Die
+18201^23892^Europa Universalis IV
+18181^19901^Football Manager 2019
+18171^19899^RimWorld
+17938^25151^Brawlhalla
+17744^27854^Age of Empires II: Definitive Edition
+17288^25185^Paladins
+17035^17590^Red Dead Redemption 2
+16863^23212^The Elder Scrolls V: Skyrim Special Edition
+16408^16570^World of Warships
+16081^16115^Left 4 Dead 2
+15810^20756^Fallout 4
+15677^18662^Fallout 76
+15491^20162^Stellaris
+15435^17800^Spacewar
+15192^15625^Human: Fall Flat
+15095^17899^eFootball PES 2020
+14508^16174^Borderlands 3
+14352^18599^Last Oasis
+14164^23588^FINAL FANTASY XIV Online
+13688^26775^SMITE
+12222^12707^Total War: THREE KINGDOMS
+11547^12332^Dota Underlords
+11331^12551^VRChat
+11026^11687^Mount & Blade: Warband
+10603^14460^Factorio
+10453^13695^The Elder Scrolls V: Skyrim
+10372^11213^Assassin's Creed Odyssey
+10300^15834^Divinity: Original Sin 2
+10086^14042^Conan Exiles
+9944^13976^No Man's Sky
+9720^14038^Risk of Rain 2
+9720^18051^Age of Empires II (2013)
+9599^10298^Dying Light
+8951^9593^Sekiro™: Shadows Die Twice
+8904^9521^Yu-Gi-Oh! Duel Links
+8694^11829^Crusader Kings II
+8455^9528^Conqueror's Blade
+8406^8626^Black Desert
+8379^10120^Green Hell
+8102^8516^Killing Floor 2
+8088^10218^Overcooked! 2
+8040^10354^The Forest
+7976^8214^Russian Fishing 4
+7922^8343^Grim Dawn
+7885^8311^The Binding of Isaac: Rebirth
+7627^9726^Albion Online
+7568^8582^Soundpad
+7515^10465^Total War: ROME II - Emperor Edition
+7494^11723^Space Engineers
+7489^7824^Oxygen Not Included
+7455^7949^Slay the Spire
+7389^11094^Elite Dangerous
+7230^8719^Company of Heroes 2
+7221^9695^Planet Zoo
+6977^7594^NGU IDLE
+6821^7238^DEAD OR ALIVE Xtreme Venus Vacation
+6634^9697^Hunt: Showdown
+6628^7017^EVE Online

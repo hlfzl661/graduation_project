@@ -79,12 +79,13 @@ def get_tag(first_html):
         datatags.append(i.text)
     # print(datatags)
 
-
-
     porate = []
 
     for j in soup.find_all('span', class_='game_review_summary positive')[2:]:
         # print(j['data-tooltip-html'])
+        if len(j) == 0:
+            for k in soup.find_all('div', class_='user_reviews_summary_row'):
+                porate.append(k['data-tooltip-html'])
         porate.append(j['data-tooltip-html'])
     print(porate)
 
@@ -96,6 +97,7 @@ def get_tag(first_html):
     print(rate[2]['data-tooltip-html'], rate[3]['data-tooltip-html'])
     '''
     return datatags
+
 
 # 数据清洗
 def clean(datatags):
@@ -179,7 +181,7 @@ def main():
     all_gamehtml = get_data(html)
     read__db()
     commentsdt = []
-    for n in range(5):
+    for n in range(10):
         first_html = all_gamehtml[n]
         datatags = get_tag(first_html)
         comments = clean(datatags)
