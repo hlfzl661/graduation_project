@@ -87,6 +87,18 @@ def get_tag(first_html):
             for k in soup.find_all('div', class_='user_reviews_summary_row'):
                 porate.append(k['data-tooltip-html'])
         porate.append(j['data-tooltip-html'])
+
+    if len(porate) == 0:
+        for j in soup.find_all('div', class_='user_reviews_summary_row'):
+            porate.append(j['data-tooltip-html'])
+            porate.append(j['data-tooltip-html'])
+    if len(porate) == 0:
+        for j in soup.find_all("div", class_='user_reviews_summary_row'):
+            porate.append(j['data-tooltip-html'])
+            porate.append(j['data-tooltip-html'])
+
+    if first_html == 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/':
+        print(repr(first_html_data))
     print(porate)
 
     # print(rate)
@@ -179,7 +191,7 @@ def draw_chart():
 def main():
     html = 'https://store.steampowered.com/stats/'
     all_gamehtml = get_data(html)
-    read__db()
+    # read__db()
     commentsdt = []
     for n in range(10):
         first_html = all_gamehtml[n]
