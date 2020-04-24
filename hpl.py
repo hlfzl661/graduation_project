@@ -12,9 +12,9 @@ def get_hpl(html):
     resp = request.urlopen(html)
     html_data = resp.read()
     soup = bs(html_data, 'html.parser')
-    rate = soup.find_all('span', class_='game_review_summary positive')
-    print(rate[2], rate[3])
-    print(rate[2]['data-tooltip-html'], rate[3]['data-tooltip-html'])
+    rate = soup.find_all('div', class_='user_reviews_summary_row')
+    # print(rate[0], rate[1])
+    print(rate[0]['data-tooltip-html'], rate[1]['data-tooltip-html'])
 
     '''
     game = soup.find_all('tr', class_='player_count_row')
@@ -38,7 +38,7 @@ def get_hpl(html):
 
 
 def main():
-    html = 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/'
+    html = 'https://store.steampowered.com/app/578080/PLAYERUNKNOWNS_BATTLEGROUNDS/'
     get_hpl(html)
     '''
     all_gamehtml = get_data(html)
