@@ -1,3 +1,4 @@
+import re
 from urllib import request
 from bs4 import BeautifulSoup as bs
 import pymysql
@@ -80,34 +81,10 @@ def get_tag(first_html):
     # print(datatags)
 
     porate = []
-
-    for j in soup.find_all('span', class_='game_review_summary positive')[2:]:
-        # print(j['data-tooltip-html'])
-        if len(j) == 0:
-            for k in soup.find_all('div', class_='user_reviews_summary_row'):
-                porate.append(k['data-tooltip-html'])
-        porate.append(j['data-tooltip-html'])
-
-    if len(porate) == 0:
-        for j in soup.find_all('div', class_='user_reviews_summary_row'):
-            porate.append(j['data-tooltip-html'])
-            porate.append(j['data-tooltip-html'])
-    if len(porate) == 0:
-        for j in soup.find_all("div", class_='user_reviews_summary_row'):
-            porate.append(j['data-tooltip-html'])
-            porate.append(j['data-tooltip-html'])
-
-    if first_html == 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/':
-        print(repr(first_html_data))
+    for j in soup.find_all('span', class_=re.compile("game_review_summary.*"))[0:2]:
+        porate.append(j.text)
     print(porate)
 
-    # print(rate)
-
-    '''
-    rate = soup.find_all('span', class_='game_review_summary positive')
-    print(rate[2], rate[3])
-    print(rate[2]['data-tooltip-html'], rate[3]['data-tooltip-html'])
-    '''
     return datatags
 
 
