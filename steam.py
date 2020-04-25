@@ -7,6 +7,7 @@ from wordcloud import WordCloud
 from imageio import imread
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
+from threading import Thread
 
 
 def get_data(html):
@@ -65,7 +66,7 @@ def read__db():
 
 
 # 获取标签
-def get_tag(first_html):
+def get_tag(first_html, tags_list, index):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/55.0.2883.87 Safari/537.36',
@@ -79,13 +80,32 @@ def get_tag(first_html):
     for i in soup.find_all('a', class_="app_tag"):
         datatags.append(i.text)
     # print(datatags)
-
+    '''
     porate = []
     for j in soup.find_all('span', class_=re.compile("game_review_summary.*"))[0:2]:
         porate.append(j.text)
     print(porate)
+    '''
+    # return datatags
+    tags_list[index] = clean(datatags)
 
-    return datatags
+
+def get_rate(first_html, rate_list, index):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/55.0.2883.87 Safari/537.36',
+        'Accept-Language': 'zh-CN,zh;q=0.8'
+    }
+    resp = request.urlopen(request.Request(url=first_html, headers=headers))
+    first_html_data = resp.read()
+    soup = bs(first_html_data, 'html.parser')
+
+    rate = []
+    for j in soup.find_all('span', class_=re.compile("game_review_summary.*"))[0:2]:
+        rate.append(j.text)
+    # print(rate)
+
+    rate_list[index] = rate
 
 
 # 数据清洗
@@ -169,14 +189,29 @@ def main():
     html = 'https://store.steampowered.com/stats/'
     all_gamehtml = get_data(html)
     # read__db()
-    commentsdt = []
-    for n in range(10):
+    tagsdt = [''] * 100
+    ratedt = [['']] * 100
+    # for j in all_gamehtml:
+    #     get_rate(j)
+
+    threads = []
+    for n in range(100):
         first_html = all_gamehtml[n]
-        datatags = get_tag(first_html)
-        comments = clean(datatags)
-        commentsdt.append(comments)
-        merge_string = ''.join(commentsdt)
-    # draw_word_cloud(merge_string)
+        get_tag_thread = Thread(target=get_tag, args=(first_html, tagsdt, n))
+        threads.append(get_tag_thread)
+        get_tag_thread.start()
+
+        get_rate_thread = Thread(target=get_rate, args=(first_html, ratedt, n))
+        threads.append(get_rate_thread)
+        get_rate_thread.start()
+
+    for thread in threads:
+        thread.join()
+
+    for rate in ratedt:
+        print(rate)
+    merge_string = ''.join(tagsdt)
+    draw_word_cloud(merge_string)
     # draw_chart()
 
 
