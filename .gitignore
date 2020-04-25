@@ -1,7 +1,5 @@
 venv/
 
-output/
-
 .idea/
 
 __pycache__/
