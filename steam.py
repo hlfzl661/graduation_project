@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 from threading import Thread
 
+cookie = '''wants_mature_content=1; browserid=1359458084329624432; timezoneOffset=28800,0; _ga=GA1.2.1926505665.1578798454; lastagecheckage=1-0-1908; _gid=GA1.2.1264468100.1587909879; steamCountry=CN%7C36b9cc369137cd46d91178768314b178; sessionid=a7a26f9422b6827f7ded755c; app_impressions=271590@1_4_4__129_1|1090630@1_7_15__13|219990@1_7_15__13|683320@1_7_15__13|815370@1_7_15__13|271590@1_7_15__13|880940@1_4_4__129_1|683320@1_4_4__139_3|418240@1_4_4__139_3|595520@1_4_4__139_3|559650@1_4_4__139_2|578080@1_4_4__139_2|214490@1_4_4__43_1; birthtime=-1959321599; recentapps=%7B%22271590%22%3A1587996043%2C%221151340%22%3A1587909886%2C%22761890%22%3A1587821084%2C%22440%22%3A1587817884%2C%22730%22%3A1587736768%2C%22359550%22%3A1587736279%2C%22578080%22%3A1587736011%2C%2248700%22%3A1586706897%2C%221085660%22%3A1586706840%2C%22397540%22%3A1586706726%7D'''
+
 
 def get_data(html):
     resp = request.urlopen(html)
@@ -70,7 +72,8 @@ def get_tag(first_html, tags_list, index):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/55.0.2883.87 Safari/537.36',
-        'Accept-Language': 'zh-CN,zh;q=0.8'
+        'Accept-Language': 'zh-CN,zh;q=0.8',
+        'Cookie': cookie
     }
     resp = request.urlopen(request.Request(url=first_html, headers=headers))
     first_html_data = resp.read()
@@ -79,14 +82,7 @@ def get_tag(first_html, tags_list, index):
     datatags = []
     for i in soup.find_all('a', class_="app_tag"):
         datatags.append(i.text)
-    # print(datatags)
-    '''
-    porate = []
-    for j in soup.find_all('span', class_=re.compile("game_review_summary.*"))[0:2]:
-        porate.append(j.text)
-    print(porate)
-    '''
-    # return datatags
+
     tags_list[index] = clean(datatags)
 
 
@@ -94,7 +90,8 @@ def get_rate(first_html, rate_list, index):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/55.0.2883.87 Safari/537.36',
-        'Accept-Language': 'zh-CN,zh;q=0.8'
+        'Accept-Language': 'zh-CN,zh;q=0.8',
+        'Cookie': cookie
     }
     resp = request.urlopen(request.Request(url=first_html, headers=headers))
     first_html_data = resp.read()
@@ -103,7 +100,6 @@ def get_rate(first_html, rate_list, index):
     rate = []
     for j in soup.find_all('span', class_=re.compile("game_review_summary.*"))[0:2]:
         rate.append(j.text)
-    # print(rate)
 
     rate_list[index] = rate
 
@@ -197,9 +193,9 @@ def main():
     threads = []
     for n in range(100):
         first_html = all_gamehtml[n]
-        get_tag_thread = Thread(target=get_tag, args=(first_html, tagsdt, n))
-        threads.append(get_tag_thread)
-        get_tag_thread.start()
+        # get_tag_thread = Thread(target=get_tag, args=(first_html, tagsdt, n))
+        # threads.append(get_tag_thread)
+        # get_tag_thread.start()
 
         get_rate_thread = Thread(target=get_rate, args=(first_html, ratedt, n))
         threads.append(get_rate_thread)
@@ -210,8 +206,8 @@ def main():
 
     for rate in ratedt:
         print(rate)
-    merge_string = ''.join(tagsdt)
-    draw_word_cloud(merge_string)
+    # merge_string = ''.join(tagsdt)
+    # draw_word_cloud(merge_string)
     # draw_chart()
 
 
