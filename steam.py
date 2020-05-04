@@ -189,7 +189,6 @@ def main():
     ratedt = [['']] * 100
     # for j in all_gamehtml:
     #     get_rate(j)
-
     threads = []
     for n in range(100):
         first_html = all_gamehtml[n]
