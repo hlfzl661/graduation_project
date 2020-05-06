@@ -101,6 +101,11 @@ def get_rate(first_html, rate_list, index):
     for j in soup.find_all('span', class_=re.compile("game_review_summary.*"))[0:2]:
         rate.append(j.text)
 
+    # if len(rate) != 0 and rate[0] != '':
+    #     print(format(rate[0] + '^' + rate[1]))
+    # else:
+    #     print(" ")
+
     rate_list[index] = rate
 
 
@@ -203,8 +208,19 @@ def main():
     for thread in threads:
         thread.join()
 
+    output = sys.stdout
+    outputfile = open("output/rate.txt", 'w', encoding='utf-8')
+    sys.stdout = outputfile
+
     for rate in ratedt:
-        print(rate)
+        if len(rate) != 0 and rate[0] != '':
+            print(format(rate[0] + "^" + rate[1]))
+        else:
+            print(" ")
+
+    outputfile.close()
+    sys.stdout = output
+
     # merge_string = ''.join(tagsdt)
     # draw_word_cloud(merge_string)
     # draw_chart()
