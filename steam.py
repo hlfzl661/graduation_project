@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 from threading import Thread
 
-cookie = '''wants_mature_content=1; browserid=1359458084329624432; timezoneOffset=28800,0; _ga=GA1.2.1926505665.1578798454; lastagecheckage=1-0-1908; _gid=GA1.2.1264468100.1587909879; steamCountry=CN%7C36b9cc369137cd46d91178768314b178; sessionid=a7a26f9422b6827f7ded755c; app_impressions=271590@1_4_4__129_1|1090630@1_7_15__13|219990@1_7_15__13|683320@1_7_15__13|815370@1_7_15__13|271590@1_7_15__13|880940@1_4_4__129_1|683320@1_4_4__139_3|418240@1_4_4__139_3|595520@1_4_4__139_3|559650@1_4_4__139_2|578080@1_4_4__139_2|214490@1_4_4__43_1; birthtime=-1959321599; recentapps=%7B%22271590%22%3A1587996043%2C%221151340%22%3A1587909886%2C%22761890%22%3A1587821084%2C%22440%22%3A1587817884%2C%22730%22%3A1587736768%2C%22359550%22%3A1587736279%2C%22578080%22%3A1587736011%2C%2248700%22%3A1586706897%2C%221085660%22%3A1586706840%2C%22397540%22%3A1586706726%7D'''
+cookie = '''wants_mature_content=1; browserid=1359458084329624432; timezoneOffset=28800,0; _ga=GA1.2.1926505665.1578798454; Steam_Language=schinese; steamCountry=CN%7C36b9cc369137cd46d91178768314b178; sessionid=88a59e1839efa03d40a22e17; _gid=GA1.2.2134477936.1589295414; app_impressions=431960@1_4_4__129_1|12210@1_7_15__13|663090@1_7_15__13|1090630@1_7_15__13|271590@1_7_15__13|12120@1_7_15__13|880940@1_4_4__129_2; birthtime=691516801; lastagecheckage=1-0-1992; recentapps=%7B%22271590%22%3A1589295428%2C%22387990%22%3A1589109151%2C%22582010%22%3A1588858752%2C%22738510%22%3A1588683067%2C%221200110%22%3A1588683015%2C%22413410%22%3A1588682919%2C%221189630%22%3A1588682657%2C%22377530%22%3A1588682630%2C%221080110%22%3A1588657793%2C%22737800%22%3A1588657752%7D; _gat_app=1'''
 
 
 def get_data(html):
@@ -47,24 +47,42 @@ def read__db():
     db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
     cursor = db.cursor()
     cursor.execute("truncate table gamelist")
-    count = 0
+
+
     fr = open("output/gamelist.txt", "r", encoding='utf-8')
     try:
-        for line in fr:
-            count += 1
-            if count == 1:
+        for index, line in enumerate(fr):
+            if index == 0:
                 continue
             line = line.strip().split('^')
             cursor.execute(
-                "insert into gamelist(current,peak,game) values('%d','%d','%s')" %
-                (int(line[0]), int(line[1]), pymysql.escape_string(line[2])))
+                "insert into gamelist(current,peak,game,id) values('%d','%d','%s','%d')" %
+                (int(line[0]), int(line[1]), pymysql.escape_string(line[2]), index))
             db.commit()
     except Exception as e:
         print(e)
         db.rollback()
+    fr.close()
+
+    gr = open("output/rate.txt", "r", encoding='utf-8')
+    try:
+        for index, line in enumerate(gr):
+            line = line.strip().split('^')
+            if len(line) > 1:
+                cursor.execute(
+                    "update gamelist set recent_reviews='%s',all_reviews='%s' where id ='%s'" %
+                    (str(line[0]), str(line[1]), str(index+1)))
+            else:
+                cursor.execute(
+                    "update gamelist set recent_reviews=' ',all_reviews=' ' where id ='%s'" % str(index+1))
+            db.commit()
+    except Exception as e:
+        print(e)
+        db.rollback()
+    gr.close()
+
     cursor.close()
     db.close()
-    fr.close()
 
 
 # 获取标签
@@ -82,7 +100,7 @@ def get_tag(first_html, tags_list, index):
     datatags = []
     for i in soup.find_all('a', class_="app_tag"):
         datatags.append(i.text)
-
+    # print(datatags)
     tags_list[index] = clean(datatags)
 
 
@@ -189,17 +207,16 @@ def draw_chart():
 def main():
     html = 'https://store.steampowered.com/stats/'
     all_gamehtml = get_data(html)
-    # read__db()
+    read__db()
     tagsdt = [''] * 100
     ratedt = [['']] * 100
-    # for j in all_gamehtml:
-    #     get_rate(j)
+
     threads = []
     for n in range(100):
         first_html = all_gamehtml[n]
-        # get_tag_thread = Thread(target=get_tag, args=(first_html, tagsdt, n))
-        # threads.append(get_tag_thread)
-        # get_tag_thread.start()
+        get_tag_thread = Thread(target=get_tag, args=(first_html, tagsdt, n))
+        threads.append(get_tag_thread)
+        get_tag_thread.start()
 
         get_rate_thread = Thread(target=get_rate, args=(first_html, ratedt, n))
         threads.append(get_rate_thread)
@@ -221,9 +238,9 @@ def main():
     outputfile.close()
     sys.stdout = output
 
-    # merge_string = ''.join(tagsdt)
-    # draw_word_cloud(merge_string)
-    # draw_chart()
+    merge_string = ''.join(tagsdt)
+    draw_word_cloud(merge_string)
+    draw_chart()
 
 
 if __name__ == '__main__':
