@@ -48,7 +48,6 @@ def read__db():
     cursor = db.cursor()
     cursor.execute("truncate table gamelist")
 
-
     fr = open("output/gamelist.txt", "r", encoding='utf-8')
     try:
         for index, line in enumerate(fr):
@@ -71,10 +70,10 @@ def read__db():
             if len(line) > 1:
                 cursor.execute(
                     "update gamelist set recent_reviews='%s',all_reviews='%s' where id ='%s'" %
-                    (str(line[0]), str(line[1]), str(index+1)))
+                    (str(line[0]), str(line[1]), str(index + 1)))
             else:
                 cursor.execute(
-                    "update gamelist set recent_reviews=' ',all_reviews=' ' where id ='%s'" % str(index+1))
+                    "update gamelist set recent_reviews=' ',all_reviews=' ' where id ='%s'" % str(index + 1))
             db.commit()
     except Exception as e:
         print(e)
