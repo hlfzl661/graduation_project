@@ -193,11 +193,68 @@ def draw_chart():
 
     # 添加横纵坐标，标题
     plt.xlabel("人数", fontproperties=my_font, fontsize=16)
-    # plt.ylabel("游戏名称", fontproperties=my_font, fontsize=16)
     plt.title("Steam在线人数排名前十的游戏人数统计图", fontproperties=my_font, fontsize=24)
 
     # 显示图形
     plt.savefig('output/chart.jpg')
+    plt.show()
+    cursor.close()  # 关闭游标
+    db.close()  # 关闭数据库
+
+
+def draw_chart_two():
+    db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
+    cursor = db.cursor()  # 获取一个游标
+    sqls = [''] * 4
+    sqls[0] = 'select count(game) from gamelist where recent_reviews = "好评如潮"'
+    sqls[1] = 'select count(game) from gamelist where recent_reviews = "特别好评"'
+    sqls[2] = 'select count(game) from gamelist where recent_reviews = "多半好评"'
+    sqls[3] = 'select count(game) from gamelist where recent_reviews = "褒贬不一"'
+
+    results = []
+    for sql in sqls:
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        results.append(result)
+
+    # 调用中文字体
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+
+    labels = ['好评如潮', '特别好评', '多半好评', '褒贬不一']
+
+    plt.pie(results, labels=labels, autopct='%1.1f%%', shadow=False, startangle=150)
+    plt.title("最近各种评价占比")
+
+    plt.savefig('output/chart2.jpg')
+    plt.show()
+    cursor.close()  # 关闭游标
+    db.close()  # 关闭数据库
+
+
+def draw_chart_tr():
+    db = pymysql.connect(host="localhost", user='root', passwd='123456', database="fzl661")
+    cursor = db.cursor()  # 获取一个游标
+    sqls = [''] * 4
+    sqls[0] = 'select count(game) from gamelist where all_reviews = "好评如潮"'
+    sqls[1] = 'select count(game) from gamelist where all_reviews = "特别好评"'
+    sqls[2] = 'select count(game) from gamelist where all_reviews = "多半好评"'
+    sqls[3] = 'select count(game) from gamelist where all_reviews = "褒贬不一"'
+
+    results = []
+    for sql in sqls:
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        results.append(result)
+
+    # 调用中文字体
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+
+    labels = ['好评如潮', '特别好评', '多半好评', '褒贬不一']
+
+    plt.pie(results, labels=labels, autopct='%1.1f%%', shadow=False, startangle=150)
+    plt.title("总体各种评价占比")
+
+    plt.savefig('output/chart3.jpg')
     plt.show()
     cursor.close()  # 关闭游标
     db.close()  # 关闭数据库
@@ -240,6 +297,8 @@ def main():
     merge_string = ''.join(tagsdt)
     draw_word_cloud(merge_string)
     draw_chart()
+    draw_chart_two()
+    draw_chart_tr()
 
 
 if __name__ == '__main__':
